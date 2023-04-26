@@ -1,8 +1,8 @@
 #logoSVG {
     width: 100vw;
-    height: 56.25vw;
+    height: calc(var(--logo-x-ratio)vw / var(--logo-y-ratio)vw);
     max-height: 100vh;
-    max-width: 177.78vw;
+    max-width: calc(var(--logo-y-ratio)vw / var(--logo-x-ratio)vw);
     margin: auto;
     position: absolute;
     top: 0;
@@ -12,10 +12,8 @@
 }
 
 path {
-    opacity: 1;
     fill: none;
     stroke-linecap: round;
-    stroke-opacity: 1;
 }
 
 #houseGroup path {
@@ -68,7 +66,7 @@ path {
     stroke-width: 20;
 }
 
-#houseLetterGroup .houseBorderShadow {
+#houseLetterGroup #houseBorderShadow {
     fill: var(--color-purple);
     stroke: var(--color-purple);
     stroke-width: 20;

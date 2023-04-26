@@ -4,8 +4,15 @@
     --color-pink: #ED7BB2;
     --color-yellow: #F3D927;
     --color-orange: #FCBB24;
+
+    --logo-x-ratio: 1;
+    --logo-y-ratio: 1;
 }
 
 body {
     margin: 0;
+}
+
+#wrapper {
+    overflow: hidden;
 }

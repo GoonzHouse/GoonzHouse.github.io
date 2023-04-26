@@ -1,32 +1,23 @@
-import data from "./assets/data.js"
-
-/*
-houseRoofPath
-window1Path
-window2Path
-window3Path
-window4Path
-letterGPath
-letterO1Path
-letterO2Path
-letterNPath
-letterZPath
-houseBorderPath
-houseLetterHPath
-houseLetterOPath
-houseLetterUPath
-houseLetterSPath
-houseLetterEPath
-*/
-
-const id = iden => document.getElementById(iden)
-const createPath = () => document.createElementNS("http://www.w3.org/2000/svg", "path")
+import data from "./data.js"
+import startAnimation from "./animation.js"
 
 function loadData() {
     buildHouseGroup()
     buildLetters()
     buildHouseBorder()
     buildHouseLetters()
+
+    startAnimation()
+}
+
+function commonPath(path, extra = "") {
+    const element = createPath()
+    element.id = path + extra
+    element.setAttribute("d", data[path + "Path"])
+    const length = element.getTotalLength()
+    element.setAttribute("stroke-dasharray", length)
+    element.setAttribute("stroke-dashoffset", length)
+    return element
 }
 
 function buildHouseGroup() {
@@ -38,11 +29,8 @@ function buildHouseGroup() {
         "window3",
         "window4"
     ]
-
     for(const path of paths) {
-        const element = createPath()
-        element.id = path
-        element.setAttribute("d", data[path + "Path"])
+        const element = commonPath(path)
         houseGroup.appendChild(element)
     }
 }
@@ -58,17 +46,13 @@ function buildLetters() {
     ]
 
     for(const path of paths) {
-        const letter = createPath()
-        letter.id = path
-        letter.setAttribute("d", data[path + "Path"])
+        const letter = commonPath(path)
 
-        const letterShadow = createPath()
+        const letterShadow = commonPath(path, "Shadow")
         letterShadow.setAttribute("class", "letterShadow")
-        letterShadow.setAttribute("d", data[path + "Path"])
 
-        const letterBorder = createPath()
+        const letterBorder = commonPath(path, "Border")
         letterBorder.setAttribute("class", "letterBorder")
-        letterBorder.setAttribute("d", data[path + "Path"])
 
         letterGroup.appendChild(letterShadow)
         letterGroup.appendChild(letterBorder)
@@ -79,13 +63,11 @@ function buildLetters() {
 function buildHouseBorder() {
     const houseLetterGroup = id("houseLetterGroup")
 
-    const container = createPath("path")
-    container.id = "houseBorder"
-    container.setAttribute("d", data.houseBorderPath)
+    const container = commonPath("houseBorder")
+    container.setAttribute("fill-opacity", 0)
 
-    const border = createPath()
-    border.setAttribute("class", "houseBorderShadow")
-    border.setAttribute("d", data.houseBorderPath)
+    const border = commonPath("houseBorderShadow")
+    border.setAttribute("fill-opacity", 0)
 
     houseLetterGroup.appendChild(border)
     houseLetterGroup.appendChild(container)
@@ -102,14 +84,11 @@ function buildHouseLetters() {
     ]
 
     for(const path of paths) {
-        const letter = createPath()
-        letter.id = path
+        const letter = commonPath(path)
         letter.setAttribute("class", "houseLetter")
-        letter.setAttribute("d", data[path + "Path"])
 
-        const letterShadow = createPath()
+        const letterShadow = commonPath(path, false)
         letterShadow.setAttribute("class", "houseLetterShadow")
-        letterShadow.setAttribute("d", data[path + "Path"])
 
         houseLetterGroup.appendChild(letterShadow)
         houseLetterGroup.appendChild(letter)
