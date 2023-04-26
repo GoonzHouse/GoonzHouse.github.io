@@ -1,0 +1,11 @@
+:root {
+    --color-purple: #9A5AA5;
+    --color-teal: #11AEB7;
+    --color-pink: #ED7BB2;
+    --color-yellow: #F3D927;
+    --color-orange: #FCBB24;
+}
+
+body {
+    margin: 0;
+}

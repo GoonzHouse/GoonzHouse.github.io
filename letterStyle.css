@@ -1,0 +1,85 @@
+#logoSVG {
+    width: 100vw;
+    height: 56.25vw;
+    max-height: 100vh;
+    max-width: 177.78vw;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 10vh;
+    left: 0;
+    right: 0;
+}
+
+path {
+    opacity: 1;
+    fill: none;
+    stroke-linecap: round;
+    stroke-opacity: 1;
+}
+
+#houseGroup path {
+    stroke: var(--color-purple);
+    stroke-width: 21;
+}
+
+#houseGroup #houseRoof {
+    stroke-width: 35;
+}
+
+#letterGroup path {
+    stroke-width: 50;
+}
+
+#letterG {
+    stroke: var(--color-teal);
+}
+
+#letterO1 {
+    stroke: var(--color-pink);
+}
+
+#letterO2 {
+    stroke: var(--color-yellow);
+}
+
+#letterN {
+    stroke: var(--color-orange);
+}
+
+#letterZ {
+    stroke: var(--color-teal);
+}
+
+#letterGroup .letterShadow {
+    stroke: var(--color-purple);
+    stroke-width: 100;
+    transform: translateX(20px) translateY(20px);
+}
+
+#letterGroup .letterBorder {
+    stroke: var(--color-purple);
+    stroke-width: 70;
+}
+
+#houseBorder {
+    fill: var(--color-pink);
+    stroke: var(--color-purple);
+    stroke-width: 20;
+}
+
+#houseLetterGroup .houseBorderShadow {
+    fill: var(--color-purple);
+    stroke: var(--color-purple);
+    stroke-width: 20;
+    transform: translateX(10px) translateY(11px);
+}
+
+#houseLetterGroup .houseLetter {
+    fill: var(--color-yellow);
+}
+
+#houseLetterGroup .houseLetterShadow {
+    fill: var(--color-teal);
+    transform: translateX(-10px) translateY(12px);
+}
