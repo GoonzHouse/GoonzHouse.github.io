@@ -1,2 +1,10 @@
-const id = iden => document.getElementById(iden)
-const createPath = () => document.createElementNS("http://www.w3.org/2000/svg", "path")
+import elementCache from "./data.js"
+
+const id = iden => {
+    if(!elementCache[iden]) elementCache[iden] = document.querySelector(`#${iden}`)
+    return elementCache[iden]
+}
+
+export {
+    id
+}

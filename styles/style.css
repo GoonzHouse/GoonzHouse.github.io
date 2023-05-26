@@ -1,18 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=PT+Sans:wght@700&display=swap");
+
 :root {
     --color-purple: #9A5AA5;
     --color-teal: #11AEB7;
     --color-pink: #ED7BB2;
     --color-yellow: #F3D927;
     --color-orange: #FCBB24;
+    --color-white: #FFFFFF;
 
     --logo-x-ratio: 1;
     --logo-y-ratio: 1;
 }
 
-body {
-    margin: 0;
+html {
+    height: 100%;
 }
 
-#wrapper {
+body {
+    height: 100%;
+    margin: 0;
     overflow: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    font-family: "PT Sans", sans-serif;
+}
+
+a {
+    color: var(--color-white);
+    text-decoration: none;
+}
+
+a:visited {
+    color: var(--color-white);
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+#svg-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    z-index: -2;
+}
+
+#content-wrapper {
+    position: absolute;
+    width: 100%;
+    top: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 0 0 0;
+}
+
+#content-wrapper div.card:nth-child(4n + 1) {
+    background: linear-gradient(45deg, var(--color-teal), var(--color-purple));
+}
+
+#content-wrapper div.card:nth-child(4n + 2) {
+    background: linear-gradient(45deg, var(--color-pink), var(--color-purple));
+}
+
+#content-wrapper div.card:nth-child(4n + 3) {
+    background: linear-gradient(45deg, var(--color-yellow), var(--color-purple));
+}
+
+#content-wrapper div.card:nth-child(4n + 4) {
+    background: linear-gradient(45deg, var(--color-orange), var(--color-purple));
+}
+
+#latest-video-wrapper {
+    flex-direction: column;
+}
+
+#latest-video-wrapper iframe {
+    border: none;
+    border-radius: 1rem;
+    min-width: 300px;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+}
+
+.card {
+    margin: 0 1rem 1rem 1rem;
+    max-width: 900px;
+    border-radius: 1rem;
+    padding: 1rem;
+    text-align: center;
+    color: var(--color-white);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+    width: calc(100vw - 4rem);
+}
+
+.card h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0;
+}
+
+.card h2 {
+    font-size: 1.25rem;
+    margin-top: 0;
+}
+
+.card > img {
+    height: 300px;
+    width: 300px;
+    border-radius: 1rem;
+}
+
+.card > div {
+    height: 100%;
+    flex-grow: 1;
+    width: 500px;
+    margin-bottom: 1rem;
+}
+
+.card .links a {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1.15rem;
+    margin: 0.25rem;
+    width: auto;
+}
+
+.icon {
+    filter: invert(100%);
+    height: 1.5rem;
+    width: 1.5rem;
 }

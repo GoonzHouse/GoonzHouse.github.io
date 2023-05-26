@@ -1,14 +1,7 @@
-#logoSVG {
-    width: 100vw;
-    height: calc(var(--logo-x-ratio)vw / var(--logo-y-ratio)vw);
-    max-height: 100vh;
-    max-width: calc(var(--logo-y-ratio)vw / var(--logo-x-ratio)vw);
+#logo-svg {
+    max-width: min(100vw, 100vh);
+    overflow: visible;
     margin: auto;
-    position: absolute;
-    top: 0;
-    bottom: 10vh;
-    left: 0;
-    right: 0;
 }
 
 path {
@@ -16,68 +9,68 @@ path {
     stroke-linecap: round;
 }
 
-#houseGroup path {
+#house-group path {
     stroke: var(--color-purple);
     stroke-width: 21;
 }
 
-#houseGroup #houseRoof {
+#house-group #houseRoof {
     stroke-width: 35;
 }
 
-#letterGroup path {
+#goonz-letter-group path {
     stroke-width: 50;
 }
 
-#letterG {
+#letter-G {
     stroke: var(--color-teal);
 }
 
-#letterO1 {
+#letter-O1 {
     stroke: var(--color-pink);
 }
 
-#letterO2 {
+#letter-O2 {
     stroke: var(--color-yellow);
 }
 
-#letterN {
+#letter-N {
     stroke: var(--color-orange);
 }
 
-#letterZ {
+#letter-Z {
     stroke: var(--color-teal);
 }
 
-#letterGroup .letterShadow {
+#goonz-letter-group .goonz-letter-shadow {
     stroke: var(--color-purple);
     stroke-width: 100;
     transform: translateX(20px) translateY(20px);
 }
 
-#letterGroup .letterBorder {
+#goonz-letter-group .goonz-letter-border {
     stroke: var(--color-purple);
     stroke-width: 70;
 }
 
-#houseBorder {
+#house-container {
     fill: var(--color-pink);
     stroke: var(--color-purple);
     stroke-width: 20;
 }
 
-#houseLetterGroup #houseBorderShadow {
+#house-container-shadow {
     fill: var(--color-purple);
     stroke: var(--color-purple);
     stroke-width: 20;
     transform: translateX(10px) translateY(11px);
 }
 
-#houseLetterGroup .houseLetter {
+#house-letter-group .house-letter {
     fill: var(--color-yellow);
 }
 
-#houseLetterGroup .houseLetterShadow {
+#house-letter-group .house-letter-shadow {
     fill: var(--color-teal);
     transform: translateX(-10px) translateY(12px);
 }

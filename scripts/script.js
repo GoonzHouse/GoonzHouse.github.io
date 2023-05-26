@@ -1,97 +1,124 @@
+import { id } from "./waterWorks.js"
 import data from "./data.js"
 import startAnimation from "./animation.js"
 
 function loadData() {
+    loadLatestVideo()
+
     buildHouseGroup()
-    buildLetters()
-    buildHouseBorder()
-    buildHouseLetters()
+    buildGoonzLetterGroup()
+    buildHouseLetterGroup()
 
     startAnimation()
 }
 
-function commonPath(path, extra = "") {
-    const element = createPath()
-    element.id = path + extra
-    element.setAttribute("d", data[path + "Path"])
+function createPath(name, path, className="") {
+    const element = document.createElementNS("http://www.w3.org/2000/svg", "path")
+
+    element.setAttribute("id", name)
+    element.setAttribute("d", path)
+    element.setAttribute("fill-opacity", 0)
+
     const length = element.getTotalLength()
     element.setAttribute("stroke-dasharray", length)
     element.setAttribute("stroke-dashoffset", length)
+
+    element.setAttribute("class", className)
+    data.elementCache[name] = element
+
     return element
 }
 
+async function loadLatestVideo() {
+    const iframe = id("latest-video")
+    const channelID = "UCkAIW2CME5jrQ7G5VRv5VNA";
+    const baseURL = "https://www.youtube.com/feeds/videos.xml?channel_id=";
+
+    try {
+        const res = await fetch("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(baseURL) + channelID)
+        const json = await res.json()
+    
+        const link = json.items[0].link
+        const id = link.substr(link.indexOf("=") + 1)
+        const src = "https://youtube.com/embed/" + id + "?controls=0&showinfo=0&rel=0"
+
+        iframe.src = src
+    } catch {
+        id("latest-video-wrapper").style.display = "none"
+    }
+}
+
 function buildHouseGroup() {
-    const houseGroup = id("houseGroup")
-    const paths = [
-        "houseRoof",
-        "window1",
-        "window2",
-        "window3",
-        "window4"
+    const houseGroup = id("house-group")
+    houseGroup.appendChild(createPath("house-roof", data.houseRoofPath))
+    houseGroup.appendChild(createPath("window-0", data.window0Path))
+    houseGroup.appendChild(createPath("window-1", data.window1Path))
+    houseGroup.appendChild(createPath("window-2", data.window2Path))
+    houseGroup.appendChild(createPath("window-3", data.window3Path))
+}
+
+function buildGoonzLetterGroup() {
+    const letters = [
+        {
+            letter: "G",
+            data: data.letterGPath
+        },
+        {
+            letter: "O1",
+            data: data.letterO1Path
+        },
+        {
+            letter: "O2",
+            data: data.letterO2Path
+        },
+        {
+            letter: "N",
+            data: data.letterNPath
+        },
+        {
+            letter: "Z",
+            data: data.letterZPath
+        }
     ]
-    for(const path of paths) {
-        const element = commonPath(path)
-        houseGroup.appendChild(element)
+    for(const letter of letters) {
+        const letterGroup = id("goonz-letter-" + letter.letter)
+        letterGroup.appendChild(createPath("letter-" + letter.letter + "-shadow", letter.data, "goonz-letter-shadow"))
+        letterGroup.appendChild(createPath("letter-" + letter.letter + "-border", letter.data, "goonz-letter-border"))
+        letterGroup.appendChild(createPath("letter-" + letter.letter, letter.data))
     }
 }
 
-function buildLetters() {
-    const letterGroup = id("letterGroup")
-    const paths = [
-        "letterG",
-        "letterO1",
-        "letterO2",
-        "letterN",
-        "letterZ"
+function buildHouseLetterGroup() {
+    const houseLetterContainer = id("house-letter-container")
+    houseLetterContainer.appendChild(createPath("house-container-shadow", data.houseBorderPath))
+    houseLetterContainer.appendChild(createPath("house-container", data.houseBorderPath))
+
+    const letters = [
+        {
+            letter: "H",
+            data: data.houseLetterHPath
+        },
+        {
+            letter: "O",
+            data: data.houseLetterOPath
+        },
+        {
+            letter: "U",
+            data: data.houseLetterUPath
+        },
+        {
+            letter: "S",
+            data: data.houseLetterSPath
+        },
+        {
+            letter: "E",
+            data: data.houseLetterEPath
+        }
     ]
-
-    for(const path of paths) {
-        const letter = commonPath(path)
-
-        const letterShadow = commonPath(path, "Shadow")
-        letterShadow.setAttribute("class", "letterShadow")
-
-        const letterBorder = commonPath(path, "Border")
-        letterBorder.setAttribute("class", "letterBorder")
-
-        letterGroup.appendChild(letterShadow)
-        letterGroup.appendChild(letterBorder)
-        letterGroup.appendChild(letter)
-    }
-}
-
-function buildHouseBorder() {
-    const houseLetterGroup = id("houseLetterGroup")
-
-    const container = commonPath("houseBorder")
-    container.setAttribute("fill-opacity", 0)
-
-    const border = commonPath("houseBorderShadow")
-    border.setAttribute("fill-opacity", 0)
-
-    houseLetterGroup.appendChild(border)
-    houseLetterGroup.appendChild(container)
-}
-
-function buildHouseLetters() {
-    const houseLetterGroup = id("houseLetterGroup")
-    const paths = [
-        "houseLetterH",
-        "houseLetterO",
-        "houseLetterU",
-        "houseLetterS",
-        "houseLetterE"
-    ]
-
-    for(const path of paths) {
-        const letter = commonPath(path)
-        letter.setAttribute("class", "houseLetter")
-
-        const letterShadow = commonPath(path, false)
-        letterShadow.setAttribute("class", "houseLetterShadow")
-
-        houseLetterGroup.appendChild(letterShadow)
-        houseLetterGroup.appendChild(letter)
+    for(const letter of letters) {
+        const letterGroup = id("house-letter-" + letter.letter)
+        letterGroup.appendChild(createPath("house-letter-" + letter.letter + "-shadow", letter.data, "house-letter-shadow"))
+        letterGroup.appendChild(createPath("house-letter-" + letter.letter, letter.data, "house-letter"))
     }
 }
 

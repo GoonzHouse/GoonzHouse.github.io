@@ -7,22 +7,86 @@
     <title>Goonz House</title>
     <link rel="stylesheet" href="./styles/letterStyle.css">
     <link rel="stylesheet" href="./styles/style.css">
-    <script src="./scripts/waterWorks.js"></script>
     <script defer src="./scripts/script.js" type="module"></script>
 </head>
 <body>
-    <div id="wrapper">
+    <div id="svg-wrapper">
         <svg
             viewBox="0 0 2000 2000"
             version="1.1"
-            id="logoSVG"
+            id="logo-svg"
             xmlns="http://www.w3.org/2000/svg"
         >
-            <defs id="defs179"/>
-            <g id="houseGroup"/>
-            <g id="letterGroup"/>
-            <g id="houseLetterGroup"/>
+            <g id="house-group"/>
+            <g id="goonz-letter-group">
+                <g id="goonz-letter-G"/>
+                <g id="goonz-letter-O1"/>
+                <g id="goonz-letter-O2"/>
+                <g id="goonz-letter-N"/>
+                <g id="goonz-letter-Z"/>
+            </g>
+            <g id="house-letter-group">
+                <g id="house-letter-container"/>
+                <g id="house-letters">
+                    <g id="house-letter-H"/>
+                    <g id="house-letter-O"/>
+                    <g id="house-letter-U"/>
+                    <g id="house-letter-S"/>
+                    <g id="house-letter-E"/>
+                </g>
+            </g>
         </svg>
+    </div>
+    <div id="content-wrapper">
+        <div id="latest-video-wrapper" class="card">
+            <iframe id="latest-video">
+            </iframe>
+        </div>
+        <div class="card">
+            <img src="./assets/goonz_house.png"/>
+            <div>
+                <h1>Goonz House</h1>
+                <h2>High class video production and other visual projects</h2>
+                <div class="links">
+                    <a href="https://www.youtube.com/@goonzhouse" target="_blank"><img class="icon" src="./assets/icons/youtube.svg"/> @goonzhouse</a>
+                    <a href="https://www.tiktok.com/@goonzhouse" target="_blank"><img class="icon" src="./assets/icons/tiktok.svg"/> @goonzhouse</a>
+                    <a href="https://www.instagram.com/goonzhouseofficial" target="_blank"><img class="icon" src="./assets/icons/instagram.svg"/> @goonzhouseofficial</a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="./assets/mystical_goblins.png"/>
+            <div>
+                <h1>Mystical Goblins</h1>
+                <h2>Goonz's top rap group</h2>
+                <div class="links">
+                    <a href="https://open.spotify.com/artist/6vfTpd54TdXorTKATq15oJ" target="_blank"><img class="icon" src="./assets/icons/spotify.svg"/> Mystical Goblins</a>
+                    <a href="https://music.apple.com/us/artist/mystical-goblins/1667959602" target="_blank"><img class="icon" src="./assets/icons/apple_music.svg"/> Mystical Goblins</a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="./assets/john_and_alex.png"/>
+            <div>
+                <h1>John and Alex in the Evening</h1>
+                <h2>WVUD's premier sports radio broadcast!</h2>
+                <div class="links">
+                    <a href="http://128.175.76.123:8000/stream/3/" target="_blank"><img class="icon" src="./assets/icons/radio.svg"/> WVUD The Basement</a>
+                    <a href="https://spinitron.com/WVUD-HD2/show/258211/John-and-Alex-in-The-Evening" target="_blank"><img class="icon" src="./assets/icons/spinitron.png"/> Spinitron and schedule</a>
+                    <a href="https://twitter.com/JohnAlexEvening" target="_blank"><img class="icon" src="./assets/icons/twitter.svg"/> @JohnAlexEvening</a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="./assets/square_brackets.png"/>
+            <div>
+                <h1>Square Brackets</h1>
+                <h2>Games and such by Roger</h2>
+                <div class="links">
+                    <a href="https://squarebrackets.net" target="_blank"><img class="icon" src="./assets/icons/link.svg"/> squarebrackets.net</a>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
