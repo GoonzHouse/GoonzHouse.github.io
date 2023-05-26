@@ -3,6 +3,7 @@ import data from "./data.js"
 import startAnimation from "./animation.js"
 
 function loadData() {
+    window.scrollTo(0, 0)
     loadLatestVideo()
 
     buildHouseGroup()
@@ -37,7 +38,7 @@ async function loadLatestVideo() {
     try {
         const res = await fetch("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(baseURL) + channelID)
         const json = await res.json()
-    
+
         const link = json.items[0].link
         const id = link.substr(link.indexOf("=") + 1)
         const src = "https://youtube.com/embed/" + id + "?controls=0&showinfo=0&rel=0"
